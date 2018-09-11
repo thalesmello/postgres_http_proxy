@@ -3,5 +3,5 @@ set -e
 
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
     CREATE EXTENSION http;
-    ALTER DATABASE SET http.timeout_ms = $HTTP_TIMEOUT_MS;
+    ALTER DATABASE $POSTGRES_DB SET http.timeout_msec = $HTTP_TIMEOUT_MS;
 EOSQL
